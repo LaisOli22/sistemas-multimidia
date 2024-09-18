@@ -23,13 +23,16 @@ nav{
     padding: 4rem 8rem;
     display: flex;
     justify-content: space-between;
+    font-size: large;
 }
 
 nav a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    font-size: x-large;
 }
+
 
 nav ul{
     list-style:none;
@@ -38,11 +41,50 @@ nav ul{
 }
 
 .title{
+    font-size: 48px;
+    width: max-content;
+}
+
+.subtitle{
+    font-size: 24px;
+    padding-top: 10px; 
+    flex-direction: column;
+    width: fit-content;
+    font-weight: normal;
+    text-align: justify;
+}
+
+.description{
     color: white;
-    z-index: 2;
     position: absolute;
-    font-size: 3rem;
-    left: 50%;
-    top:75%;
-    transform: translate(-50%, -75%);
+    z-index: 2; 
+    text-align: left;
+    margin-top: 10%;
+    margin-left: 7%;
+    width: 17%;
+}
+
+.info1 .title, .info2 .title{
+    font-size: 40px;
+    width: max-content;
+}
+
+.info1 .subtitle, .info2 .subtitle{
+    font-size: 20px;
+    padding-top: 10px; 
+    padding-bottom: 20px;
+    flex-direction: column;
+    font-weight: normal;
+    text-align: justify;
+}
+
+.comment{
+    color: white;
+    position: absolute;
+    z-index: 2; 
+    margin-top: 8%;
+    margin-right: 7%;
+    width: 15%;
+    right: 0;
+    align-content: center;
 }

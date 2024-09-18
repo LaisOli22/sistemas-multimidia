@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chocolate Donut
+* source:	https://sketchfab.com/3d-models/chocolate-donut-69545db8860c46f28c39d8e088a3da43
+* author:	stratt3000 (https://sketchfab.com/stratt3000)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chocolate Donut" (https://sketchfab.com/3d-models/chocolate-donut-69545db8860c46f28c39d8e088a3da43) by stratt3000 (https://sketchfab.com/stratt3000) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
