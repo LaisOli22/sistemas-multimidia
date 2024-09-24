@@ -15,15 +15,6 @@ const normalMapTextureChocolate = textureLoader.load('./assets/chocolate_donut/t
 const baseColorTextureChocolate = textureLoader.load('./assets/chocolate_donut/textures/Material.001_baseColor.png');
 const TextureChocolate = textureLoader.load('./assets/chocolate_donut/textures/Material_specularf0.png');
 
-//criar esfera
-const geometry = new THREE.TorusGeometry(4, 3, 20, 100);
-const material = new THREE.MeshStandardMaterial({
-  color: "#00ff83",
-  roughness: 0.6,
-});
-const mesh = new THREE.Mesh(geometry, material);
-//scene.add(mesh);
-
 const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -46,9 +37,6 @@ gltfLoader.load("./assets/donut/scene.gltf", (gltf) => {
     }
   const radius = 6;
   donut.scale.set(radius, radius, radius); 
-  //chocolateDonut.rotation.x = Math.random() * Math.PI;
-  donut.rotation.y = Math.random() * Math.PI;
-  donut.rotation.z = Math.random() * Math.PI;
   scene.add(donut);
 
   if (donutsLoaded) {
@@ -59,6 +47,7 @@ gltfLoader.load("./assets/donut/scene.gltf", (gltf) => {
 });
 });
 
+//Donut de chocolate
 gltfLoader.load("./assets/chocolate_donut/scene.gltf", (gltf) => {
   chocolateDonut = gltf.scene;
 
@@ -71,10 +60,6 @@ gltfLoader.load("./assets/chocolate_donut/scene.gltf", (gltf) => {
     }
   const radius = 20;
   chocolateDonut.scale.set(radius, radius, radius); 
-  chocolateDonut.position.set(2, 4,1)
-  //chocolateDonut.rotation.x = Math.random() * Math.PI;
-  chocolateDonut.rotation.y = Math.random() * Math.PI;
-  chocolateDonut.rotation.z = Math.random() * Math.PI;
   scene.add(chocolateDonut);
 });
 });
@@ -100,20 +85,13 @@ function createDonuts(count) {
   }
 }
 
-   
-
 //Luz
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); 
 directionalLight.position.set(5, 10, 15); 
 scene.add(directionalLight);
 
-const pointLight = new THREE.PointLight(0xffffff, 2, 100); 
-pointLight.position.set(10, 5, 10);
-scene.add(pointLight);
-
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
 scene.add(ambientLight);
-
 
 //câmera
 const camera = new THREE.PerspectiveCamera(
@@ -144,8 +122,8 @@ const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 controls.enablePan = false;
 controls.enableZoom = true;
-controls.autoRotate = false;
-//controls.autoRotateSpeed = 5;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 2;
 
 const loop = () => {
   controls.update();
@@ -155,7 +133,7 @@ const loop = () => {
 loop();
 
 const tl = gsap.timeline({ defaults: { duration: 1 } });
-tl.from(mesh.scale, { z: 0, x: 0, y: 0 }, { z: 1, x: 1, y: 1 });
 tl.fromTo("nav", { y: "-100%" }, { y: "0%" });
-tl.fromTo("title", { opacity: 0 }, { opacity: 1 });
+tl.fromTo(".description", { opacity: 0 }, { opacity: 1 },"-=1");
+tl.fromTo(".comment", { opacity: 0 }, { opacity: 1 }, "-=1");
 
