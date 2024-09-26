@@ -108,6 +108,7 @@ const canvas = document.querySelector(".webgl");
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
+renderer.setClearColor(0xb39283);
 
 window.addEventListener("resize", () => {
   sizes.width = window.innerWidth;
@@ -137,3 +138,50 @@ tl.fromTo("nav", { y: "-100%" }, { y: "0%" });
 tl.fromTo(".description", { opacity: 0 }, { opacity: 1 },"-=1");
 tl.fromTo(".comment", { opacity: 0 }, { opacity: 1 }, "-=1");
 
+// Variável de controle de estado
+let estado = 2; // 1: Sem textura, 2: Com textura, 3: Com textura e iluminação
+
+// Função para definir o estado de acordo com o valor da variável
+function alternarEstado() {
+  if (estado%3 == 0) {
+    // Estado 1: Remover texturas e iluminação
+    removerIluminacao();
+  } else if (estado%3 == 1) {
+    // Estado 2: Aplicar textura sem iluminação
+    aplicarIluminacao();
+  } else if (estado%3 == 2) {
+    // Estado 3: Aplicar textura e iluminação
+    aplicarIluminacao();
+    aplicarIluminacaoDirecional();
+  }
+}
+
+// Função para remover a iluminação da cena
+// Função para remover apenas a iluminação direcional da cena
+
+function removerIluminacao() {
+  scene.remove(directionalLight);
+  scene.remove(ambientLight);
+}
+// Função para adicionar a iluminação na cena
+function aplicarIluminacaoDirecional() {
+  // Luz direcional
+  scene.add(directionalLight);
+}
+
+function aplicarIluminacao() {
+  // Luz direcional
+  scene.add(ambientLight);
+}
+
+// Função para alternar entre os estados
+function alternarEntreEstados() {
+  estado++// Cicla entre 1, 2 e 3
+  alternarEstado();
+}
+
+// Adiciona o evento ao botão para alternar entre os estados
+document.getElementById('meuBotao').addEventListener('click', alternarEntreEstados);
+
+// Inicializa no estado 1
+alternarEstado();
