@@ -8,6 +8,8 @@ const scene = new THREE.Scene();
 
 //Texturas
 const textureLoader = new THREE.TextureLoader();
+const backgroundTexture = textureLoader.load("./assets/colorkit (4).png");
+scene.background = backgroundTexture;
 const normalMapTexture = textureLoader.load('./assets/donut/textures/Bake_metallicRoughness.png');
 const baseColorTexture = textureLoader.load('./assets/donut/textures/Bake_baseColor.png');
 
@@ -108,7 +110,7 @@ const canvas = document.querySelector(".webgl");
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
-renderer.setClearColor(0xb39283);
+//renderer.setClearColor(0xb39283);
 
 window.addEventListener("resize", () => {
   sizes.width = window.innerWidth;
@@ -143,13 +145,13 @@ let estado = 2; // 1: Sem textura, 2: Com textura, 3: Com textura e iluminação
 
 // Função para definir o estado de acordo com o valor da variável
 function alternarEstado() {
-  if (estado%3 == 0) {
+  if (estado%3 === 0) {
     // Estado 1: Remover texturas e iluminação
     removerIluminacao();
-  } else if (estado%3 == 1) {
+  } else if (estado%3 === 1) {
     // Estado 2: Aplicar textura sem iluminação
     aplicarIluminacao();
-  } else if (estado%3 == 2) {
+  } else if (estado%3 === 2) {
     // Estado 3: Aplicar textura e iluminação
     aplicarIluminacao();
     aplicarIluminacaoDirecional();
